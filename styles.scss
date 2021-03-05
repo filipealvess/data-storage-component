@@ -1,0 +1,249 @@
+@mixin reset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+@mixin flexbox {
+  display: -ms-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin transition($duration, $time-function, $properties...) {
+  -o-transition: $duration $properties $time-function;
+  -moz-transition: $duration $properties $time-function;
+  -webkit-transition: $duration $properties $time-function;
+  transition: $duration $properties $time-function;
+}
+
+@mixin transform($value) {
+  -ms-transform: $value;
+  -o-transform: $value;
+  -moz-transform: $value;
+  -webkit-transform: $value;
+  transform: $value;
+}
+
+@mixin background-image($value) {
+  background-image: -o-#{$value};
+  background-image: -moz-#{$value};
+  background-image: -webkit-#{$value};
+  background-image: $value;
+}
+
+body {
+  @include reset;
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0C122C;
+  overflow: hidden;
+
+  * {
+    @include reset;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+
+.background-desktop {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  min-width: 100%;
+  height: 50%;
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.background-mobile {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-width: 375px;
+  height: 100%;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
+}
+
+.components {
+  @include flexbox;
+  align-items: flex-end;
+  z-index: 1;
+
+  @media (max-width: 700px) {
+    width: 80%;
+    max-width: 300px;
+    flex-direction: column;
+  }
+}
+
+.options {
+  padding: 25px 100px 25px 25px;
+  margin-right: 15px;
+  border-radius: 8px 60px 8px 8px;
+  background-color: #1E2C69;
+
+  @media (max-width: 700px) {
+    width: 100%;
+    margin: 0 0 15px;
+  }
+}
+
+.logo {
+  height: 35px;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  @include flexbox;
+}
+
+.button {
+  @include flexbox;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #0B122C;
+  cursor: pointer;
+  @include transform(scale(1));
+  @include transition(0.2s, ease, transform);
+
+  &:hover {
+    @include transform(scale(1.1));
+  }
+
+  + .button {
+    margin-left: 10px;
+  }
+
+  i {
+    color: #697ED6;
+    font-size: 16px;
+  }
+}
+
+.storage-infos {
+  position: relative;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #1E2C69;
+
+  @media (max-width: 700px) {
+    width: 100%;
+    padding-bottom: 35px;
+  }
+
+  * {
+    color: #DDDBFF;
+  }
+}
+
+.used, .used * {
+  font-weight: 700;
+}
+
+.remaining-storage {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  @include transform(translate(0, -50%));
+
+  @media (max-width: 700px) {
+    top: 100%;
+    right: 50%;
+    @include transform(translate(50%, -50%));
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: -12px;
+    width: 0;
+    height: 0;
+    border: 10px solid #FFFFFF;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  p {
+    @include flexbox;
+    align-items: center;
+    color: #848794;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    .number {
+      margin-right: 5px;
+      color: #0C102B;
+      font-size: 28px;
+      font-weight: 700;
+    }
+  }
+}
+
+.progressbar {
+  width: (100vw / 3);
+  height: 15px;
+  padding: 2px;
+  margin: 5px 0;
+  border-radius: 20px;
+  background-color: #151E49;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+
+  .value {
+    @include flexbox;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-right: 1.5px;
+    border-radius: 20px;
+    @include background-image(linear-gradient(90deg, #FFA399 0%, #FA4C91 100%));
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+    }
+  }
+}
+
+.to-left {
+  font-weight: 700;
+  float: left;
+}
+
+.to-right {
+  font-weight: 700;
+  float: right;
+}

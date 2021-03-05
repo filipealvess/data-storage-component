@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fylo</title>
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="components">
+    <div class="options">
+      <img src="img/logo.svg" alt="Fylo" class="logo">
+
+      <div class="buttons">
+        <div class="button"><i class="fas fa-file"></i></div>
+        <div class="button"><i class="fas fa-folder"></i></div>
+        <div class="button"><i class="fas fa-cloud-upload-alt"></i></div>
+      </div>
+    </div>
+
+    <div class="storage-infos">
+      <p class="description">
+        You've used
+        <span class="used"><span data-used>0</span> GB</span>
+        of your storage
+      </p>
+
+      <div class="progressbar">
+        <div class="value"></div>
+      </div>
+
+      <p class="to-left">0 GB</p>
+      <p class="to-right" data-max-value>0 GB</p>
+
+      <div class="remaining-storage">
+        <p>
+          <span class="number">0</span>
+          GB left
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <img src="img/bg-desktop.png" class="background-desktop">
+  <img src="img/bg-mobile.png" class="background-mobile">
+
+  <script src="script.js"></script>
+</body>
+</html>
